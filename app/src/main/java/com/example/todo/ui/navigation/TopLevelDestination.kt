@@ -12,12 +12,12 @@ enum class TopLevelDestination(
     val title: String,
 ) {
     INCOMPLETE(
-        route = "incomplete",
+        route = "incomplete_tasks",
         icon = Icons.Default.List,
         title = "未完了",
     ),
     COMPLETED(
-        route = "completed",
+        route = "completed_tasks",
         icon = Icons.Default.Done,
         title = "完了",
     ),

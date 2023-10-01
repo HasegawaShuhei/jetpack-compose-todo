@@ -12,7 +12,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.todo.ui.navigation.BottomNavigationBar
 import com.example.todo.ui.navigation.NavGraph
 import com.example.todo.ui.theme.TodoTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

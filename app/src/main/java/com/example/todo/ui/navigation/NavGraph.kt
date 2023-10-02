@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.todo.ui.add_task.AddTaskScreen
-import com.example.todo.ui.add_task.addTaskRoute
+import com.example.todo.ui.upsert_task.UpsertTaskScreen
+import com.example.todo.ui.upsert_task.upsertTaskRoute
 import com.example.todo.ui.completed_tasks.CompletedTasksScreen
 import com.example.todo.ui.incomplete_tasks.IncompleteTasksScreen
 
@@ -21,8 +21,8 @@ fun NavGraph(navController: NavHostController) {
         composable(route = TopLevelDestination.COMPLETED.route) {
             CompletedTasksScreen()
         }
-        composable(route = addTaskRoute) {
-            AddTaskScreen(onBack = { navController.popBackStack() })
+        composable(route = upsertTaskRoute) {
+            UpsertTaskScreen(onBack = { navController.popBackStack() })
         }
     }
 }

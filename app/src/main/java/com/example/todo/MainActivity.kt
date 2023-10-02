@@ -16,11 +16,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.todo.ui.add_task.addTaskRoute
 import com.example.todo.ui.navigation.BottomNavigationBar
 import com.example.todo.ui.navigation.NavGraph
 import com.example.todo.ui.navigation.TopLevelDestination
 import com.example.todo.ui.theme.TodoTheme
+import com.example.todo.ui.upsert_task.upsertTaskRoute
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -54,7 +54,9 @@ fun TodoApp() {
             floatingActionButton = {
                 if (isActionsVisible) {
                     FloatingActionButton(onClick = {
-                        navController.navigate(route = addTaskRoute)
+                        navController.navigate(route = upsertTaskRoute){
+
+                        }
                     }) {
                         Icon(Icons.Filled.Add, contentDescription = "追加")
                     }

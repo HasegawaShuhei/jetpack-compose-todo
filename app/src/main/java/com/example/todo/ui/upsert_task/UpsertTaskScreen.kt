@@ -1,4 +1,4 @@
-package com.example.todo.ui.add_task
+package com.example.todo.ui.upsert_task
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -9,11 +9,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
-const val addTaskRoute = "add_task"
+const val upsertTaskRoute = "upsert_task"
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddTaskScreen(onBack: () -> Unit) {
+fun UpsertTaskScreen(onBack: () -> Unit) {
     Scaffold(
         content = { padding ->
             Box(modifier = Modifier.padding(padding)) {

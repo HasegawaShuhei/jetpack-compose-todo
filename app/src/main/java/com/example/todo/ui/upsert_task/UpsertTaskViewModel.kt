@@ -22,7 +22,7 @@ class UpsertTaskViewModel @Inject constructor(
     fun createTask() {
         val task = Task(
             title = _state.value.title,
-            content = _state.value.content
+            description = _state.value.description
         )
         viewModelScope.launch {
             taskDao.insertTask(task)
@@ -33,8 +33,8 @@ class UpsertTaskViewModel @Inject constructor(
         _state.value = _state.value.copy(title = title)
     }
 
-    fun onChangeContent(content: String) {
-        _state.value = _state.value.copy(content = content)
+    fun onChangeDescription(description: String) {
+        _state.value = _state.value.copy(description = description)
     }
 
 }

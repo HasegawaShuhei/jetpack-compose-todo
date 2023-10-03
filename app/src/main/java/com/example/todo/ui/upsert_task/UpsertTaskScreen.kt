@@ -45,8 +45,8 @@ fun UpsertTaskScreen(
                 .fillMaxWidth()
                 .height(100.dp),
             title = "内容",
-            value = viewModel.state.value.content,
-            onValueChange = viewModel::onChangeContent,
+            value = viewModel.state.value.description,
+            onValueChange = viewModel::onChangeDescription,
             singleLine = false,
             maxLines = 5,
         )
@@ -54,7 +54,7 @@ fun UpsertTaskScreen(
         Button(modifier = Modifier
             .align(Alignment.CenterHorizontally),
             onClick = {
-                // TODO: 追加処理
+                viewModel.createTask()
                 onBack()
             }) {
             Text(text = "追加")

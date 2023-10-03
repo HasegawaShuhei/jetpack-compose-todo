@@ -8,8 +8,8 @@ import androidx.room.TypeConverter
 data class Task(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val title: String,
-    val description: String,
-    val status: Status,
+    val content: String,
+    val status: Status = Status.INCOMPLETE,
 )
 
 enum class Status {

@@ -18,11 +18,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 
 const val upsertTaskRoute = "upsert_task"
 
 @Composable
-fun UpsertTaskScreen(onBack: () -> Unit) {
+fun UpsertTaskScreen(
+    onBack: () -> Unit,
+    viewModel: UpsertTaskViewModel = hiltViewModel(),
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -32,8 +36,8 @@ fun UpsertTaskScreen(onBack: () -> Unit) {
             modifier = Modifier
                 .fillMaxWidth(),
             title = "タイトル",
-            value = "value",
-            onValueChange = {},
+            value = viewModel.state.value.title,
+            onValueChange = viewModel::onChangeTitle,
         )
         Spacer(modifier = Modifier.height(8.dp))
         TextFieldWithTitle(
@@ -41,8 +45,8 @@ fun UpsertTaskScreen(onBack: () -> Unit) {
                 .fillMaxWidth()
                 .height(100.dp),
             title = "内容",
-            value = "value",
-            onValueChange = {},
+            value = viewModel.state.value.content,
+            onValueChange = viewModel::onChangeContent,
             singleLine = false,
             maxLines = 5,
         )
@@ -50,7 +54,7 @@ fun UpsertTaskScreen(onBack: () -> Unit) {
         Button(modifier = Modifier
             .align(Alignment.CenterHorizontally),
             onClick = {
-            // TODO: 追加処理
+                // TODO: 追加処理
                 onBack()
             }) {
             Text(text = "追加")

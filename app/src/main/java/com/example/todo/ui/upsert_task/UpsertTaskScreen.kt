@@ -37,7 +37,7 @@ fun UpsertTaskScreen(
                 .fillMaxWidth(),
             title = "タイトル",
             value = viewModel.state.value.title,
-            onValueChange = viewModel::onChangeTitle,
+            onValueChange = viewModel::onTitleChange,
         )
         Spacer(modifier = Modifier.height(8.dp))
         TextFieldWithTitle(
@@ -46,7 +46,7 @@ fun UpsertTaskScreen(
                 .height(100.dp),
             title = "内容",
             value = viewModel.state.value.description,
-            onValueChange = viewModel::onChangeDescription,
+            onValueChange = viewModel::onDescriptionChange,
             singleLine = false,
             maxLines = 5,
         )

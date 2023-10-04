@@ -29,11 +29,11 @@ class UpsertTaskViewModel @Inject constructor(
         }
     }
 
-    fun onChangeTitle(title: String) {
+    fun onTitleChange(title: String) {
         _state.value = _state.value.copy(title = title)
     }
 
-    fun onChangeDescription(description: String) {
+    fun onDescriptionChange(description: String) {
         _state.value = _state.value.copy(description = description)
     }
 

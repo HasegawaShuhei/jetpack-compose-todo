@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.todo.data.Task
 
@@ -32,4 +33,32 @@ fun TaskList(
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun TaskListPreview() {
+    val tasks = listOf(
+        Task(
+            id = 0,
+            title = "title",
+            description = "description"
+        ),
+        Task(
+            id = 1,
+            title = "title",
+            description = "description"
+        ),
+        Task(
+            id = 2,
+            title = "title",
+            description = "description"
+        )
+    )
+    TaskList(
+        tasks = tasks,
+        isChecked = false,
+        onEdit = {},
+        onDelete = {}
+    )
 }

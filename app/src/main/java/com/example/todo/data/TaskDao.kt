@@ -11,8 +11,8 @@ interface TaskDao {
     @Insert
     suspend fun insertTask(task: Task)
 
-    @Query("SELECT * FROM tasks")
-    fun getAllTasks(): Flow<List<Task>>
+    @Query("SELECT * FROM tasks WHERE status = :status")
+    fun getTasksByStatus(status: Status): Flow<List<Task>>
 
     @Delete
     suspend fun delete(task: Task)

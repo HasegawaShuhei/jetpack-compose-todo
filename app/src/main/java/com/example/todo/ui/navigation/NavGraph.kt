@@ -22,6 +22,7 @@ fun NavGraph(navController: NavHostController) {
             val viewModel: IncompleteTasksViewModel = hiltViewModel()
             IncompleteTasksScreen(
                 state = viewModel.state.value,
+                onComplete = viewModel::completeTask,
                 onDelete = viewModel::deleteTask,
                 toUpsertScreen = {
                     navController.currentBackStackEntry?.savedStateHandle?.set("task", it)

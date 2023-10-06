@@ -14,6 +14,7 @@ import com.example.todo.data.Task
 fun TaskList(
     tasks: List<Task>,
     isChecked: Boolean,
+    onSwitchStatus: (Task) -> Unit,
     onEdit: (Task) -> Unit,
     onDelete: (Task) -> Unit,
 ) {
@@ -28,6 +29,7 @@ fun TaskList(
             TaskListItem(
                 task = tasks[it],
                 isChecked = isChecked,
+                onSwitchStatus = onSwitchStatus,
                 onEdit = onEdit,
                 onDelete = onDelete,
             )
@@ -58,6 +60,7 @@ fun TaskListPreview() {
     TaskList(
         tasks = tasks,
         isChecked = false,
+        onSwitchStatus = {},
         onEdit = {},
         onDelete = {}
     )

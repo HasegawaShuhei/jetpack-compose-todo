@@ -8,12 +8,14 @@ import com.example.todo.ui.components.TaskList
 @Composable
 fun IncompleteTasksScreen(
     state: IncompleteTasksState,
+    onComplete: (Task) -> Unit,
     onDelete: (Task) -> Unit,
     toUpsertScreen: (Task) -> Unit,
 ) {
     TaskList(
         tasks = state.tasks,
         isChecked = false,
+        onSwitchStatus = onComplete,
         onEdit = toUpsertScreen,
         onDelete = onDelete,
     )

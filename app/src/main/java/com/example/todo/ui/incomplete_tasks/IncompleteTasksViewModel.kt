@@ -25,6 +25,12 @@ class IncompleteTasksViewModel @Inject constructor(
         getIncompleteTasks()
     }
 
+    fun completeTask(task: Task) {
+        viewModelScope.launch {
+            taskDao.upsert(task.copy(status = Status.COMPLETED))
+        }
+    }
+
     fun deleteTask(task: Task) {
         viewModelScope.launch {
             taskDao.delete(task)

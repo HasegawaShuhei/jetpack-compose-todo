@@ -29,6 +29,7 @@ import com.example.todo.data.Task
 fun TaskListItem(
     task: Task,
     isChecked: Boolean,
+    onSwitchStatus: (Task) -> Unit,
     onEdit: (Task) -> Unit,
     onDelete: (Task) -> Unit,
 ) {
@@ -47,7 +48,10 @@ fun TaskListItem(
             ) {
                 Checkbox(
                     checked = checkState,
-                    onCheckedChange = { checkState = it }
+                    onCheckedChange = {
+                        checkState = it
+                        onSwitchStatus(task)
+                    }
                 )
                 Column {
                     Text(
@@ -80,6 +84,7 @@ fun TaskListItemPreview() {
     TaskListItem(
         task = task,
         isChecked = false,
+        onSwitchStatus = {},
         onEdit = {},
         onDelete = {},
     )

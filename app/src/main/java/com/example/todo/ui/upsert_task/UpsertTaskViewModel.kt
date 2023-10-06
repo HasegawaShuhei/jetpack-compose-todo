@@ -22,7 +22,7 @@ class UpsertTaskViewModel @Inject constructor(
     fun setTask(task: Task?) {
         if (task == null) return
         _state.value = _state.value.copy(
-            id = task.id,
+            task = task,
             title = task.title,
             description = task.description,
             isEditing = true,
@@ -32,9 +32,10 @@ class UpsertTaskViewModel @Inject constructor(
     fun upsertTask() {
         val task = if (_state.value.isEditing) {
             Task(
-                id = _state.value.id!!,
+                id = _state.value.task!!.id,
                 title = _state.value.title,
-                description = _state.value.description
+                description = _state.value.description,
+                status = _state.value.task!!.status,
             )
         } else {
             Task(

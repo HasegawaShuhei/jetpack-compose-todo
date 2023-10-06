@@ -40,6 +40,8 @@ fun NavGraph(navController: NavHostController) {
         }
         composable(route = upsertTaskRoute) {
             val task = navController.previousBackStackEntry?.savedStateHandle?.get<Task?>("task")
+            // savedStateHandleに残ってしまうので消しておく
+            navController.previousBackStackEntry?.savedStateHandle?.remove<Task?>("task")
             UpsertTaskScreen(onBack = { navController.popBackStack() }, task = task)
         }
     }

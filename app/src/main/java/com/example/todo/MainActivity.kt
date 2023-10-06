@@ -53,11 +53,9 @@ fun TodoApp() {
             },
             floatingActionButton = {
                 if (isActionsVisible) {
-                    FloatingActionButton(onClick = {
-                        navController.navigate(route = upsertTaskRoute){
-
-                        }
-                    }) {
+                    FloatingActionButton(
+                        onClick = { navController.navigate(route = upsertTaskRoute) }
+                    ) {
                         Icon(Icons.Filled.Add, contentDescription = "追加")
                     }
                 }

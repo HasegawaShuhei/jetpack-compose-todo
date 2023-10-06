@@ -20,10 +20,10 @@ class IncompleteTasksViewModel @Inject constructor(
     val state: State<IncompleteTasksState> = _state
 
     init {
-        getAllTasks()
+        getIncompleteTasks()
     }
 
-   private fun getAllTasks() {
+   private fun getIncompleteTasks() {
         taskDao.getTasksByStatus(Status.INCOMPLETE).onEach {
             _state.value = _state.value.copy(tasks = it)
         }.launchIn(viewModelScope)

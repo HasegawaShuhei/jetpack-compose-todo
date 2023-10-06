@@ -7,14 +7,14 @@ import com.example.todo.ui.components.TaskList
 
 @Composable
 fun IncompleteTasksScreen(
-    viewModel: IncompleteTasksViewModel = hiltViewModel(),
+    state: IncompleteTasksState,
+    onDelete: (Task) -> Unit,
     toUpsertScreen: (Task) -> Unit,
 ) {
     TaskList(
-        tasks = viewModel.state.value.tasks,
+        tasks = state.tasks,
         isChecked = false,
         onEdit = toUpsertScreen,
-        onDelete = {// TODO
-        },
+        onDelete = onDelete,
     )
 }

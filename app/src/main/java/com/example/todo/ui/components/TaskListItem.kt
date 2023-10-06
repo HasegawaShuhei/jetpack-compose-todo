@@ -14,10 +14,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -33,7 +29,6 @@ fun TaskListItem(
     onEdit: (Task) -> Unit,
     onDelete: (Task) -> Unit,
 ) {
-    var checkState: Boolean by remember { mutableStateOf(isChecked) }
     Card(modifier = Modifier.fillMaxWidth()) {
         Row(
             modifier = Modifier
@@ -47,9 +42,8 @@ fun TaskListItem(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Checkbox(
-                    checked = checkState,
+                    checked = isChecked,
                     onCheckedChange = {
-                        checkState = it
                         onSwitchStatus(task)
                     }
                 )

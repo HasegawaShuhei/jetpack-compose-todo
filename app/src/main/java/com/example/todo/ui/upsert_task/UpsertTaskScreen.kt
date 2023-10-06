@@ -13,20 +13,28 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.todo.data.Task
 
 const val upsertTaskRoute = "upsert_task"
 
 @Composable
 fun UpsertTaskScreen(
     onBack: () -> Unit,
+    task: Task?,
     viewModel: UpsertTaskViewModel = hiltViewModel(),
 ) {
+    val state = viewModel.state.value
+
+    LaunchedEffect(key1 = Unit) {
+        viewModel.setTask(task)
+    }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -54,10 +62,10 @@ fun UpsertTaskScreen(
         Button(modifier = Modifier
             .align(Alignment.CenterHorizontally),
             onClick = {
-                viewModel.createTask()
+                viewModel.upsertTask()
                 onBack()
             }) {
-            Text(text = "追加")
+            Text(text = if (state.isEditing) "保存" else "追加")
         }
     }
 }
@@ -93,5 +101,8 @@ fun TextFieldWithTitle(
 @Preview
 @Composable
 fun UpsertTaskScreenPreview() {
-    UpsertTaskScreen(onBack = {})
+    UpsertTaskScreen(
+        onBack = {},
+        task = null,
+    )
 }

@@ -19,13 +19,32 @@ class UpsertTaskViewModel @Inject constructor(
     private var _state = mutableStateOf(UpsertTaskState())
     val state: State<UpsertTaskState> = _state
 
-    fun createTask() {
-        val task = Task(
-            title = _state.value.title,
-            description = _state.value.description
+    fun setTask(task: Task?) {
+        if (task == null) return
+        _state.value = _state.value.copy(
+            id = task.id,
+            title = task.title,
+            description = task.description,
+            isEditing = true,
         )
+    }
+
+    fun upsertTask() {
+        val task = if (_state.value.isEditing) {
+            Task(
+                id = _state.value.id!!,
+                title = _state.value.title,
+                description = _state.value.description
+            )
+        } else {
+            Task(
+                title = _state.value.title,
+                description = _state.value.description
+            )
+        }
+
         viewModelScope.launch {
-            taskDao.insertTask(task)
+            taskDao.upsert(task)
         }
     }
 

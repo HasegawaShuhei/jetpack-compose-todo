@@ -52,7 +52,9 @@ fun TaskListItem(
                         text = task.title,
                         fontWeight = FontWeight.Bold
                     )
-                    Text(text = task.description)
+                    if(task.description.isNotEmpty()){
+                        Text(text = task.description)
+                    }
                 }
             }
             Row {
